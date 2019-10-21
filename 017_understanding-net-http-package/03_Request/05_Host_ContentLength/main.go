@@ -23,11 +23,16 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		Host          string
 		ContentLength int64
 	}{
+		// https://golang.org/pkg/net/http/#Request
 		req.Method,
 		req.URL,
 		req.Form,
 		req.Header,
 		req.Host,
+		// ContentLength records the length of the associated content
+		// Value == -1 indicates that the length is unknown
+		// Values >= 0 indicate that the given number of bytes may
+		// be read from Body
 		req.ContentLength,
 	}
 	tpl.ExecuteTemplate(w, "index.gohtml", data)

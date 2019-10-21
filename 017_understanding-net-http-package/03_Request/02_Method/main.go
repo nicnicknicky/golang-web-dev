@@ -19,6 +19,7 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		Method      string
 		Submissions url.Values
 	}{
+		// https://golang.org/pkg/net/http/#Request
 		req.Method,
 		req.Form,
 	}

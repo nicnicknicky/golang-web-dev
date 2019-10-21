@@ -17,6 +17,7 @@ func main() {
 
 	http.HandleFunc("/dog", d)
 	http.HandleFunc("/cat", c)
-
+	// https://golang.org/pkg/net/http/#ListenAndServe
+	// The handler is typically nil, in which case the DefaultServeMux is used
 	http.ListenAndServe(":8080", nil)
 }

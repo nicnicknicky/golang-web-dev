@@ -9,10 +9,22 @@ import (
 type hotdog int
 
 func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	// https://golang.org/pkg/net/http/#Request.ParseForm
 	err := req.ParseForm()
 	if err != nil {
 		log.Fatalln(err)
 	}
+	// https://golang.org/pkg/net/http/#Request
+	// Form contains the parsed form data, including both the URL
+	// field's query parameters via GET and the POST or PUT form data.
+	// * This field is only available after ParseForm is called *
+	// type Request struct {
+	// 	...
+	// 	Form url.Values
+	// 	...
+	// }
+	// https://golang.org/pkg/net/url/#Values
+	// - type Values map[string][]string
 
 	tpl.ExecuteTemplate(w, "index.gohtml", req.Form)
 }

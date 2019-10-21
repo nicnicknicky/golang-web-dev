@@ -16,10 +16,12 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 
 	data := struct {
-		Method      string
+		Method string
+		// https://golang.org/pkg/net/url/#URL
 		URL         *url.URL
 		Submissions url.Values
 	}{
+		// https://golang.org/pkg/net/http/#Request
 		req.Method,
 		req.URL,
 		req.Form,

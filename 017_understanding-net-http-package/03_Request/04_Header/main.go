@@ -16,11 +16,19 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 
 	data := struct {
-		Method      string
-		URL         *url.URL
+		Method string
+		URL    *url.URL
+		// url.Values
+		// https://golang.org/pkg/net/url/#Values
+		// type Values map[string][]string
+		// ! keys are case-sensitive !
 		Submissions map[string][]string
-		Header      http.Header
+		// https://golang.org/pkg/net/http/#Header
+		// key-value pairs in an HTTP header
+		// ! HTTP defines that header names are case-insensitive !
+		Header http.Header
 	}{
+		// https://golang.org/pkg/net/http/#Request
 		req.Method,
 		req.URL,
 		req.Form,
