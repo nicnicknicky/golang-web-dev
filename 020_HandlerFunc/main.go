@@ -32,5 +32,7 @@ func main() {
 
 // 3 Methods of Adding Handlers to DefaultServeMux
 // - http.Handle: user-defined type with <method ServeHTTP> that implements the Handler interface
-// - http.Handle: ordinary function that takes arguments http.ResponseWriter, *http.Request converted to <HandlerFunc> type
+// - http.Handle + http.HandlerFunc:
+//   ordinary function that takes arguments http.ResponseWriter, *http.Request
+//   converted to http.Handler type with http.HandlerFunc
 // - http.HandleFunc: directly pass in ordinary function that takes arguments http.ResponseWriter, *http.Request

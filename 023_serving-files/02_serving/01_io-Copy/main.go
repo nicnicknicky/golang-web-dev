@@ -22,6 +22,10 @@ func dog(w http.ResponseWriter, req *http.Request) {
 }
 
 func dogPic(w http.ResponseWriter, req *http.Request) {
+	// https://golang.org/pkg/os/#Open
+	// os.File represents an open file descriptor
+	// has methods Read and Write
+	// - implements io.Reader and io.Writer interfaces respectively
 	f, err := os.Open("toby.jpg")
 	if err != nil {
 		http.Error(w, "file not found", 404)
@@ -29,5 +33,6 @@ func dogPic(w http.ResponseWriter, req *http.Request) {
 	}
 	defer f.Close()
 
+	// https://golang.org/pkg/io/#Copy
 	io.Copy(w, f)
 }

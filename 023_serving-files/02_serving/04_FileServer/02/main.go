@@ -7,6 +7,10 @@ import (
 
 func main() {
 	http.HandleFunc("/", dog)
+	// https://golang.org/pkg/net/http/#StripPrefix
+	// http.StripPrefix can modify the request
+	// URL's path before the FileServer sees it
+	// allows a directory on disk to be served under an alternate URL path
 	http.Handle("/resources/", http.StripPrefix("/resources", http.FileServer(http.Dir("./assets"))))
 	http.ListenAndServe(":8080", nil)
 }

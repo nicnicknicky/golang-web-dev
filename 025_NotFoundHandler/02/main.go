@@ -12,6 +12,7 @@ func main() {
 }
 
 func foo(w http.ResponseWriter, req *http.Request) {
+	// http.Error response
 	if req.URL.Path != "/" {
 		http.NotFound(w, req)
 		return

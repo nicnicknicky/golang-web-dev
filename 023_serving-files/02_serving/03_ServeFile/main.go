@@ -17,5 +17,6 @@ func dog(w http.ResponseWriter, req *http.Request) {
 }
 
 func dogPic(w http.ResponseWriter, req *http.Request) {
+	// https://golang.org/pkg/net/http/#ServeFile
 	http.ServeFile(w, req, "toby.jpg")
 }
